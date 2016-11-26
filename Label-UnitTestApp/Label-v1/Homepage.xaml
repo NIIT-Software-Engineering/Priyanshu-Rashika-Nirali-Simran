@@ -1,0 +1,242 @@
+﻿<Page
+    x:Class="Label_v1.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Label_v1"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Loaded="Page_Loaded"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style TargetType="Button" x:Name="ButtonSettings">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="{ThemeResource SystemControlBackgroundAccentBrush}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="RootGrid" 
+                          Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid"
+                                                     Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="White" />
+                                            </ObjectAnimationUsingKeyFrames>
+
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                     Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightBaseMediumLowBrush}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                     Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundAccentBrush}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid"
+                                                     Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Beige" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                     Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundAccentBrush}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                     Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightBaseHighBrush}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="RootGrid" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid"
+                                                     Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundBaseLowBrush}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                     Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlDisabledBaseLowBrush}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                     Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlDisabledTransparentBrush}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentPresenter x:Name="ContentPresenter"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Content="{TemplateBinding Content}"
+                            ContentTransitions="{TemplateBinding ContentTransitions}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Padding="{TemplateBinding Padding}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            AutomationProperties.AccessibilityView="Raw"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Page.Resources>
+
+    <Grid Background="Black">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="FirstColumn" Width="*"/>
+            <ColumnDefinition x:Name="SecondColumn" Width="*"/>
+            <ColumnDefinition x:Name="ThirdColumn" Width="*"/>
+            <ColumnDefinition x:Name="FourthColumn" Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="FirstRow" Height="*"/>
+            <RowDefinition x:Name="SecondRow" Height="*"/>
+            <RowDefinition x:Name="ThirdRow" Height="*"/>
+            <RowDefinition x:Name="FourthRow" Height="*"/>
+            <RowDefinition x:Name="FifthRow" Height="*"/>
+        </Grid.RowDefinitions>
+        
+            <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="Landscape">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SecondRow.Height" Value="0" />
+                        <Setter Target="ThirdRow.Height" Value="0" />
+                        <Setter Target="FourthRow.Height" Value="0" />
+                        <Setter Target="FifthRow.Height" Value="0" />
+
+                        <Setter Target="TextileButton.(Grid.Row)" Value="0"/>
+                        <Setter Target="FoodButton.(Grid.Row)" Value="0"/>
+                        <Setter Target="FootwearButton.(Grid.Row)" Value="0" />
+                        <Setter Target="ExamButton.(Grid.Row)" Value="0"/>
+
+                        <Setter Target="TextileButton.(Grid.Column)" Value="0"/>
+                        <Setter Target="FoodButton.(Grid.Column)" Value="1"/>
+                        <Setter Target="FootwearButton.(Grid.Column)" Value="2" />
+                        <Setter Target="ExamButton.(Grid.Column)" Value="3"/>
+
+                        <Setter Target="AboutButton.(Grid.Column)" Value="3"/>
+                        <Setter Target="AboutButton.VerticalAlignment" Value="Top"/>
+                        <Setter Target="AboutButton.HorizontalAlignment" Value="Right"/>
+                        <Setter Target="AboutButton.Margin" Value="0,20,20,0"/>
+
+                        <Setter Target="ListLabelsButton.(Grid.Column)" Value="3"/>
+                        <Setter Target="ListLabelsButton.VerticalAlignment" Value="Bottom"/>
+                        <Setter Target="ListLabelsButton.HorizontalAlignment" Value="Stretch"/>
+                        <Setter Target="ListLabelsButton.Width" Value="250"/>
+                        <Setter Target="ListLabelsButton.Margin" Value="20,0,20,20"/>
+                        <Setter Target="ListLabelsButton.Height" Value="60"/>
+                        <Setter Target="ListLabelsButton.(Canvas.ZIndex)" Value="220"/>
+                        
+
+                        <Setter Target="ExamButton.(Canvas.ZIndex)" Value="0"/>
+                       
+                        <Setter Target="TextileTextblock.(Grid.Row)" Value="0"/>
+                        <Setter Target="FoodTextblock.(Grid.Row)" Value="0"/>
+                        <Setter Target="FootwearTextblock.(Grid.Row)" Value="0"/>
+                        <Setter Target="ExamTextblock.(Grid.Row)" Value="0"/>
+
+                        <Setter Target="TextileTextblock.(Grid.Column)" Value="0"/>
+                        <Setter Target="FoodTextblock.(Grid.Column)" Value="1"/>
+                        <Setter Target="FootwearTextblock.(Grid.Column)" Value="2"/>
+                        <Setter Target="ExamTextblock.(Grid.Column)" Value="3"/>
+
+                        <Setter Target="TextileTextblock.FontSize" Value="80"/>
+                        <Setter Target="FoodTextblock.FontSize" Value="80"/>
+                        <Setter Target="FootwearTextblock.FontSize" Value="75"/>
+                        <Setter Target="ExamTextblock.FontSize" Value="70"/>
+                    
+                        <Setter Target="TextileTextblock.VerticalAlignment" Value="Center"/>
+                        <Setter Target="FoodTextblock.VerticalAlignment" Value="Center"/>
+                        <Setter Target="FootwearTextblock.VerticalAlignment" Value="Center"/>
+                        <Setter Target="ExamTextblock.VerticalAlignment" Value="Center"/>
+
+                        <Setter Target="TextileTextblock.HorizontalAlignment" Value="Center"/>
+                        <Setter Target="FoodTextblock.HorizontalAlignment" Value="Center"/>
+                        <Setter Target="FootwearTextblock.HorizontalAlignment" Value="Center"/>
+                        <Setter Target="ExamTextblock.HorizontalAlignment" Value="Center"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="Portrait">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="FirstRow.Height" Value="40"/>
+                        <Setter Target="SecondColumn.Width" Value="0"/>
+                        <Setter Target="ThirdColumn.Width" Value="0"/>
+                        <Setter Target="FourthColumn.Width" Value="0"/>
+
+                        <Setter Target="TextileButton.(Grid.Row)" Value="1"/>
+                        <Setter Target="FoodButton.(Grid.Row)" Value="2"/>
+                        <Setter Target="FootwearButton.(Grid.Row)" Value="3" />
+                        <Setter Target="ExamButton.(Grid.Row)" Value="4"/>
+
+                        <Setter Target="TextileButton.(Grid.Column)" Value="0"/>
+                        <Setter Target="FoodButton.(Grid.Column)" Value="0"/>
+                        <Setter Target="FootwearButton.(Grid.Column)" Value="0" />
+                        <Setter Target="ExamButton.(Grid.Column)" Value="0"/>
+
+                        <Setter Target="SavedLabelButton.(Grid.Row)" Value="0"/>
+                        <Setter Target="SavedLabelButton.HorizontalAlignment" Value="Right"/>
+                        <Setter Target="SavedLabelButton.VerticalAlignment" Value="Center" />
+                        <Setter Target="SavedLabelButton.Margin" Value="5,0,0,0"/>
+
+                        <Setter Target="AboutButton.(Grid.Row)" Value="0"/>
+                        <Setter Target="AboutButton.HorizontalAlignment" Value="Left"/>
+                        <Setter Target="AboutButton.VerticalAlignment" Value="Center"/>
+                        <Setter Target="AboutButton.Margin" Value="0,0,5,0" />
+
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <TextBlock Tapped="TextileImageTapped" Name="TextileTextblock" Text="Textile&#10; Style" FontFamily="TimesNewRoman" Foreground="White" FontWeight="Bold" Canvas.ZIndex="70"/>
+        <TextBlock Tapped="FoodImageTapped" Name="FoodTextblock" Text="Food&#10; Style" FontFamily="TimesNewRoman" Foreground="#FFF7FFAB" FontWeight="Bold" Canvas.ZIndex="120"/>
+        <TextBlock Tapped="FootwearImageTapped" Name="FootwearTextblock" Text="Footwear&#10; Style" FontFamily="TimesNewRoman" Foreground="Wheat" FontWeight="Bold" Canvas.ZIndex="170"/>
+        <TextBlock Tapped="ExamImageTapped" Name="ExamTextblock" Text="Education&#10;  Style" FontFamily="TimesNewRoman" Foreground="DarkSlateGray" FontWeight="Bold" Canvas.ZIndex="220"/>
+
+        <Button Name="TextileButton"  BorderThickness="-7" Background="Black" Click="TextileButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Canvas.ZIndex="50">
+            <Button.Content>
+                <Image Source="Assets/wool.jpg" Stretch="UniformToFill"/>
+            </Button.Content>
+        </Button>
+        <Button Name="FoodButton" BorderThickness="-7" Background="Black" Click="FoodButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Canvas.ZIndex="100">
+            <Button.Content>
+                <Image Source="Assets/Food.jpg" Stretch="UniformToFill"/>
+            </Button.Content>
+        </Button>
+        <Button Name="FootwearButton" BorderThickness="-7" Background="Black" Click="FootwearButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Canvas.ZIndex="150">
+            <Button.Content>
+                <Image Source="Assets/Footwear8.jpg" Stretch="UniformToFill"/>
+            </Button.Content>
+        </Button>
+        <Button Name="ExamButton" Opacity="0.95" BorderThickness="-7" Background="Black" Click="ExamButtonClicked" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Canvas.ZIndex="200">
+            <Button.Content>
+                <Image Source="Assets/exam2.jpg" Stretch="UniformToFill"/>
+            </Button.Content>
+        </Button>
+
+        <Button Name="AboutButton" Width="40" Height="40" ToolTipService.ToolTip="About Company"/>
+        <Button Content="List Labels" FontSize="20" Click="ListLabels" Name="ListLabelsButton" ToolTipService.ToolTip="List Labels" Style="{StaticResource ButtonSettings}"/>
+    </Grid>
+</Page>
